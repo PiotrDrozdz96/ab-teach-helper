@@ -2,12 +2,13 @@ META {
   Parser = Game;
   Engine = G2A;
   MergeMode = 1;
+  After = teach_helper_config.d;
 };
 
-const int line_height = 200;
+const int TH_LineHeight = 200;
 
 func void print_statline(var string msg, var int line) {
-  ai_printpos(msg, 220, 2000 + (line_height * line), "#E7CF9C", 1000 * 300, true);
+  ai_printpos(msg, TH_XPosition, TH_YPosition + (TH_LineHeight * (line + 3 )), TH_Color, 1000 * 300, true);
 };
 
 func string build_fightskillstring(var string msg, var int real, var int teach) {
@@ -62,8 +63,8 @@ func void print_teachhelper_start() {
   ai_printpos_clear();
   var string concattext1;
   concattext1 = concatstrings(print_kosten, inttostring(hero.lp));
-  ai_printpos(concattext1, 220, 1400, "#E7CF9C", 1000 * 300, true);
+  ai_printpos(concattext1, TH_XPosition, TH_YPosition, TH_Color, 1000 * 300, true);
   concattext1 = concatstrings(name_currency, inttostring(Npc_HasItems(hero, Itmi_gold)));
-  ai_printpos(concattext1, 220, 1600, "#E7CF9C", 1000 * 300, true);
-  ai_printpos("----------------------------", 220, 1800, "#E7CF9C", 1000 * 300, true);
+  ai_printpos(concattext1, TH_XPosition, TH_YPosition + TH_LineHeight, TH_Color, 1000 * 300, true);
+  ai_printpos("----------------------------", TH_XPosition, TH_YPosition + (TH_LineHeight * 2), TH_Color, 1000 * 300, true);
 };
